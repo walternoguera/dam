@@ -1,18 +1,15 @@
-## Getting Started
+# Práctica 2: Simulación de Caracoles con Procesos
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+Esta práctica simula una carrera entre "caracoles", donde cada caracol es un proceso independiente. Cada caracol tiene un retraso aleatorio antes de imprimir su nombre, lo que simula una "carrera".
 
-## Folder Structure
+### Funcionamiento
+- **`Caracol.java`**: Genera un retraso aleatorio usando `Random` y `Thread.sleep()`, luego imprime su nombre con `System.out.println()`.
+- **`LanzaCaracoles.java`**: Lanza varios procesos `Caracol` usando `ProcessBuilder`. Cada proceso se ejecuta con los parámetros adecuados, como el tiempo de retraso y el nombre del caracol. Los resultados de cada proceso se capturan con `BufferedReader` y se muestran en consola.
+- **Manejo de excepciones**: Cualquier error durante la ejecución de los procesos es manejado con un bloque `try-catch`.
 
-The workspace contains two folders by default, where:
+### Salida Esperada
+Ejecutando el programa, la salida será algo como:
 
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+```plaintext
+B
+A
