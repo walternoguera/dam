@@ -8,7 +8,7 @@ Esta práctica simula una carrera entre "caracoles", donde cada caracol es un pr
 - **Manejo de excepciones**: Cualquier error durante la ejecución de los procesos es manejado con un bloque `try-catch`.
 
 ### Salida Esperada
-Ejecutando el programa, la salida será algo como:
+Ejecutando el programa, la salida será algo como esto:
 
 ```plaintext
 B
