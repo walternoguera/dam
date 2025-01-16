@@ -57,7 +57,7 @@ def ventana_login():
     login_button.pack()
     
     #botón de salir
-    salir_button = tk.Button(login, text="x", command=salir)
+    salir_button = tk.Button(login, text="x", foreground="red", command=salir)
     salir_button.place(x=470, y=270)
 
     login.mainloop()
