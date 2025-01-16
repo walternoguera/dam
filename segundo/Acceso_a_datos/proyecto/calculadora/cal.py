@@ -18,7 +18,7 @@ def ventana_principal():
     
     #Añadimos el menú "Inicio"
     menu_inicio = tk.Menu(menu_bar, tearoff=0)
-    menu_inicio.add_cascade(label="Inicio", command=volver_a_login)
+    menu_inicio.add_cascade(label="Inicio", command=return_login)
     menu_bar.add_cascade(label="Inicio", menu=menu_inicio)
 
     v_principal.mainloop()
@@ -33,7 +33,7 @@ def validate_password():
     else:
         messagebox.showerror("Error", "Error de contraseña")
 
-def volver_a_login():
+def return_login():
     v_principal.destroy()
     ventana_login()
 
