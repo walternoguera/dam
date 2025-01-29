@@ -1,0 +1,236 @@
+'''1.Implementa un programa que muestre los números primos
+comprendidos entre 1 y 50.
+Ayuda:
+Vamos a instalar una librería que nos lo facilita. Seguramente tengas que instalarla:
+pip install sympy
+Esta librería te facilita si un número es primo o no lo es.'''
+
+from sympy import isprime  # Importamos la función isprime de sympy, esa funcion nos va indicar si un número es primo
+
+def primo(numero):
+    return isprime(numero) 
+
+print("Números primos entre 1 y 50:")
+for num in range(1, 51):
+    if primo(num):  #llamamos a la funcion para verificar si es primo
+        print(num)
+
+
+'''2. Realiza un programa que calcule la suma de los dígitos de un número entero
+ingresado por el usuario. Es decir, el usuario introduce por ejemplo el 123 por teclado, y
+la salida deberá ser 1+2+3=6'''
+
+numero = int(input("Ingresa un número entero: "))
+
+#convertimos en valor absoluto con abs, esto va convertir en positivo los números ingresados 
+numero = abs(numero)
+suma_digitos = 0
+
+while numero > 0:
+    digito = numero % 10 
+    suma_digitos += digito
+    numero //= 10
+
+print(f"La suma de los dígitos es: {suma_digitos}")
+
+'''3. Realiza un programa que cuente el número de vocales que hay en una cadena de
+texto ingresada por el usuario.'''
+
+cadena = input("Ingresa una cadena:")
+contador_vocales = 0
+
+for caracter in cadena.lower():
+    if caracter in "aeiou":
+        contador_vocales += 1
+print(f"En el texto {cadena} se encontraron {contador_vocales} vocales.")
+
+'''4. Crea un programa que determine si una palabra es un palíndromo.'''
+
+texto = input("Dime una palabra: ").lower()
+
+if texto == texto[::-1]: #usando slicing, en lugar de poner 1:2:-1, estamos dejando en blanco es decir ::, esto hace que recorra toda la cadena y al incluir -1 estamos diciendo que recorra la cadena hacia atras
+    print(f"La palabra ingresada {texto}, es un palíndromo")
+else:
+    print("No es un palíndromo")
+
+
+'''5. Escribe un programa que encuentre el máximo común divisor (MCD) de
+dos números ingresados por el usuario.
+Ayuda:
+El MCD es el número más grande que divide a dos números de manera exacta (sin dejar
+residuo o resto)
+Sean los números 12 y 8, por ejemplo.
+Los divisores de 12 son: 1, 2, 3, 4, 6, 12, ya que al dividir 12 por cualquiera de
+esos números el resto = 0.
+Los divisores de 8 son: 1, 2, 4, 8 por la misma razón pero respecto al 8.
+Si te fijas, los divisores comunes, los que coinciden, entre 12 y 8 son: 1, 2, 4.
+De esos tres comunes, el más grande, el máximo común divisor es 4, por lo que el
+MCD(12,8)=4'''
+
+
+num1 = int(input("Ingresa el primer número:"))
+num2 = int(input("Ingresa el segundo número:"))
+
+while num2 != 0:
+    residuo = num1 % num2
+    num1 = num2
+    num2 = residuo
+
+print(f"El MCD de los números {num1} y {num2} es: {num1}")
+
+
+'''6. Realiza un programa que simule el juego de "Piedra, Papel o Tijeras" contra el
+ordenador.'''
+
+import random
+
+print("=== Juego: Piedra, Papel o Tijeras ===")
+
+for i in range(5):
+    print(f"\nRonda {i + 1}:")
+    
+    usuario = input("Elige una de las opciones: piedra, papel, tijeras: ").lower()
+
+    if usuario not in ["piedra", "papel", "tijeras"]:
+        print("Elige una de las opciones válidas")
+        continue 
+
+    opciones = ["piedra", "papel", "tijeras"]
+    pc = random.choice(opciones)
+    print(f"El ordenador eligió: {pc}")
+
+    if usuario == pc:
+        print("¡Empate!")
+    elif (usuario == "piedra" and pc == "tijeras") or (usuario == "papel" and pc == "piedra") or (usuario == "tijeras" and pc == "papel"):
+        print("Ganaste")
+    else:
+        print("Perdiste")
+
+
+'''7. Implementa las siguientes puertas lógicas:
+AND, OR, NOT'''
+
+#ejercicio de calificaciones usando AND, OR y NOT
+contador = 0
+while contador < 5:
+    nota1 = float(input("Ingresa la nota del primer examen: "))
+    nota2 = float(input("Ingresa la nota del segundo examen: "))
+
+    if nota1 >= 5 and nota2 >= 5:
+        print("Aprobaste ambos exámenes")
+    elif nota1 >= 5 or nota2 >= 5:
+        print("Aprobaste uno de los dos exámenes")
+    else:
+        if not (nota1 >= 5 or nota2 >= 5):
+            print("Reprobaste ambos exámenes")
+
+    contador += 1 
+
+
+'''8. Juego de la patata caliente. Si has visto el Grand Prix este verano sabrás más o menos
+de qué se trata, en caso contrario, te lo explico.
+Se tiene un tiempo indeterminado, no conocido, aleatorio, en el cual se tendrá que
+adivinar un número (entero positivo).
+Cuando se inicia el programa, el algoritmo de forma aleatoria marca el tiempo que hay
+para adivinar el número, que también es aleatorio.
+Especificaciones:
+- Tiempo: deberá estar comprendido entre 8 y 15 segundos
+- Número: deberá estar comprendido entre 1 y 100 (incluidos)
+- Se puede indicar por pantalla, si lo prefieres (no es obligatorio), el tiempo que
+hay para adivinar el número.
+- Si se termina el tiempo, se indica que se ha terminado el programa y y el
+número que se tendría que haber encontrado.
+- Si lo encuentras, felicitas al usuario
+Os dejo output de ejemplo (no tiene por qué ser exactamente igual):
+Tienes 5 segundos para adivinar el número entre 1 y 100.
+Adivina el número: 50
+El número es menor.
+Adivina el número: 25
+El número es mayor.
+Adivina el número: 35
+Se acabó el tiempo. El número era 38.
+Ayuda:
+Utiliza las librerías time y random.
+La librería time (time.time) puede darte el tiempo en segundos desde el 1 de
+enero de 1970, UTC.'''
+
+
+import random
+import time
+
+#generamos tiempo y número aleatorio con randint
+tiempo_limite = random.randint(8, 15)
+numero_secreto = random.randint(1, 100)
+
+print(f"Tienes {tiempo_limite} segundos para adivinar el número entre 1 y 100")
+
+inicio_tiempo = time.time()
+
+while True:
+    tiempo_actual = time.time()
+    if tiempo_actual - inicio_tiempo > tiempo_limite:
+        print(f"Se te acabó el tiempo. El número secreto era {numero_secreto}")
+        break #interrumpimos ejecución en caso de que termine el tiempo
+
+    intento = input("Adivina el número: ")
+    if not intento.isdigit():
+        print("Ingresa un número entero")
+        continue
+    intento = int(intento)
+
+    if intento == numero_secreto:
+        print(f"Haz adivinado el número secreto, el cual es {numero_secreto}")
+        break
+    elif intento < numero_secreto:
+        print("El número es mayor")
+    else:
+        print("El número es menor")
+
+
+'''9. Para terminar, volvemos al ejercicio número 1, pero esta vez sin librería que nos lo
+facilite.
+Ayuda:
+Implementa una función, “Es_Primo(Numero)”, que reciba un número entero.
+Deberás tener en cuenta que los números menores de 2 NO son primos.
+Hay que calcular desde el primer número primo hasta el número correspondiente
+a la raíz cuadrada de “Numero”.
+La razón, te la tendrás que creer ya que te la da tu compañero matemático, de
+usar la raíz cuadrada es que si “Numero” tiene un divisor (es divisible con resto
+cero) mayor que su raíz cuadrada, también tendrá un divisor menor que su raíz
+cuadrada, por lo que no es necesario comprobar más allá de la raíz cuadrada.
+Por si te sirve, una definición más técnica es que se debe a que los divisores
+vienen en pares. Por ejemplo, si d es un divisor de n, entonces n / d también es
+un divisor de n.
+Si ambos divisores fueran mayores que la raíz cuadrada de n, su producto sería
+mayor que n, lo cual es imposible.
+Esto reduce significativamente el número de comprobaciones necesarias,
+haciendo el algoritmo más eficiente.
+Para calcular la raíz cuadrada, puedes hacer: Numero**0.5
+Te pongo un ejemplo más fácil:
+Supongamos que Numero es 36.
+Sus divisores son 1, 2, 3, 4, 6, 9, 12, 18 y 36 (igual que en el ejercicio de MCD).
+Ten en cuenta que la raíz cuadrada de 36 es 6 (6*6=36)
+Observa que los divisores menores o iguales a la raíz cuadrada de 36 (que es 6)
+son 1, 2, 3, 4 y 6. (fíjate que el 6 está incluido)
+Los divisores mayores que 6 (9, 12, 18 y 36) son simplemente los resultados de
+dividir 36 por los divisores menores o iguales a 6 (sus pares)
+Por lo tanto, si no encuentras ningún divisor de Numero hasta su raíz cuadrada,
+puedes estar seguro de que Numero no tiene otros divisores y, por lo tanto, es
+primo.'''
+
+
+#definimos la funcion Es_primo
+def Es_primo(numero):
+    if numero < 2:
+        return False
+    
+    for dividor in range(2, int(numero**0.5) + 1):
+        if numero % dividor == 0:
+            return False
+    return True #si no encuentra divisores entonces el numero es primo
+
+numero = int(input("Ingresa un número para verificar si es primo: "))
+if Es_primo(numero):
+    print(f"El número {numero} es primo")
+else:
+    print(f"El número {numero} no es primo")

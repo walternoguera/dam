@@ -1,0 +1,17 @@
+Activity: Pantalla
+
+    Lógica: .kt
+    Gráfica: .xml
+    (Opcional: Compose → definir lo gráfico en el .kt)
+
+Intent: acciones
+
+    Action: abrir navegador, abrir la cámara, abrir un map, mandar un correo, pasar de pantalla
+    Datos: origen destino, teléfono, mail, geo, web
+
+Dos tipos:
+
+    Explícitos: → yo escribo
+    Implícitos: → se dan por creados
+
+
