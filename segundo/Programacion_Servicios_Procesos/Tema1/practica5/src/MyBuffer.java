@@ -13,7 +13,12 @@ public class MyBuffer {
     public synchronized void producir(int value) {
 
         while (cola.size() == capacidad) {
-            wait();
+            try {
+                wait();
+            } catch (InterruptedException e) {
+                // TODO Auto-generated catch block
+                e.printStackTrace();
+            }
         }
         cola.add(value);
     }
