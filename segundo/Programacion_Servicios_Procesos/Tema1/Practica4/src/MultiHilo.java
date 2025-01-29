@@ -24,7 +24,7 @@ public class MultiHilo {
             System.out.println("yield");
             Thread.yield(); // cede el control al procesador
         }
-        System.out.println("todos los hilos has terminado");
+        System.out.println("todos los hilos han terminado");
 
     }
 }
