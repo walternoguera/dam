@@ -13,13 +13,6 @@
 4. Si el buffer está vacío, el consumidor se bloquea (`wait()`).
 5. Cuando hay cambios en el buffer, `notifyAll()` despierta los hilos bloqueados.
 
-## Código Clave:
-```java
-synchronized void producir(int value) throws InterruptedException {
-    while (cola.size() == capacidad) { 
-        wait(); // Espera si el buffer está lleno
-    }
-    cola.add(value);
-    notifyAll(); // Despierta hilos
-}
+## Dependency Management
 
+The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
