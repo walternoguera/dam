@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- Importación de clases necesarias para construir la interfaz -->
+<?import javafx.geometry.Insets?>  <!-- Para definir márgenes y espacios internos -->
+<?import javafx.scene.control.Button?>  <!-- Para agregar un botón -->
+<?import javafx.scene.control.Label?>  <!-- Para agregar un texto simple -->
+<?import javafx.scene.layout.VBox?>  <!-- Para organizar elementos en una columna vertical -->
+<?import javafx.scene.text.Text?>  <!-- Para mostrar texto con más opciones de formato -->
+
+<!-- Contenedor principal: VBox (una caja vertical que organiza los elementos) -->
+<VBox alignment="CENTER" spacing="20.0"
+      xmlns:fx="http://javafx.com/fxml/1"
+      xmlns="http://javafx.com/javafx/23.0.1"
+      fx:controller="org.example.holamundo.HelloController">
+
+  <!-- Define el margen interno para que los elementos no queden pegados a los bordes -->
+  <padding>
+    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+  </padding>
+
+  <!-- Texto fijo que siempre se muestra en pantalla -->
+  <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Esto es una prueba" />
+
+  <!-- Etiqueta de texto (Label) que cambiará su contenido cuando se presione el botón -->
+  <Label fx:id="welcomeText" />
+  <!-- Se vincula con la variable `welcomeText` en HelloController.java -->
+
+  <!-- Botón que al hacer clic ejecuta el método `onHelloButtonClick()` del controlador -->
+  <Button onAction="#onHelloButtonClick" text="Hello!" />
+</VBox>
