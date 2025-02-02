@@ -1,17 +1,17 @@
-## Getting Started
+# Productor-Consumidor en Java
 
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
+## Conceptos clave:
+- **Hilos (Thread)**: Permiten ejecutar tareas en paralelo.
+- **Sincronización**: Controla el acceso a recursos compartidos.
+- **Buffer compartido (`MyBuffer`)**: Donde los productores colocan elementos y los consumidores los extraen.
+- **Métodos `wait()` y `notifyAll()`**: Se usan para gestionar la espera y el despertar de los hilos.
 
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
+## Ciclo de Vida de los Hilos:
+1. Se crea un hilo (`Thread` con `Runnable`).
+2. Se inicia con `.start()`, lo que ejecuta su `run()`.
+3. Si el buffer está lleno, el productor se bloquea (`wait()`).
+4. Si el buffer está vacío, el consumidor se bloquea (`wait()`).
+5. Cuando hay cambios en el buffer, `notifyAll()` despierta los hilos bloqueados.
 
 ## Dependency Management
 

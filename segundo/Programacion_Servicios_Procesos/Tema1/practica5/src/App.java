@@ -1,17 +1,23 @@
 public class App {
-    public static void main(String[] args) throws Exception {
+    public static void main(String[] args) throws Exception 
+    {
+        
+        MyBuffer mb1 = new MyBuffer(5);
 
-        MyBuffer buffer1 = new MyBuffer(5);
-        //cola fifo
-        buffer1.producir(12);
-        buffer1.producir(13);
-        buffer1.producir(14);
-        buffer1.producir(15);
-        buffer1.producir(16);
+        Thread pro1 = new Thread(new Productor(mb1,0, 1000, 2000));
+        //Thread pro2 = new Thread(new Productor(mb1,0, 1000, 2000));
+        
+        Thread con1 = new Thread(new Consumidor(mb1, 0, 3000, 5000));
+        //Thread con2 = new Thread(new Consumidor(mb1, 2000, 2000));
 
-        //consumimos y por defecto va usar el primero es decir el 12
-        int val = buffer1.consumir();
+        
+        pro1.start();
+        //pro2.start();
+        con1.start();
+        
 
-        System.out.println(buffer1);
+
+
+
     }
 }
