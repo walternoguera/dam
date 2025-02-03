@@ -1,0 +1,203 @@
+'''1- Implementa un algoritmo que itere sobre una tupla dada y la muestre por pantalla.
+mi_tupla = (1, 2, 3, "cuatro", "cinco")'''
+
+mi_tupla = (1, 2, 3, "cuatro" , "cinco")
+
+for i in mi_tupla:
+    print(f"{i}, ", end= "")
+
+
+'''2- Devolver la longitud de la tupla anterior'''
+
+mi_tupla = (1, 2, 3, "cuatro" , "cinco")
+longitud = len(mi_tupla)
+print(f"La longitud de la tupla es: {longitud}")
+
+
+'''3- Indicar si los elementos “cuatro”, “2” y 2 están en la tupla anterior'''
+
+mi_tupla = (1, 2, 3, "cuatro" , "cinco")
+
+if "cinco" in mi_tupla and 2 in mi_tupla:
+    print("Los elementos 'cuatro', '2' y 2 están en la tupla")
+else:
+    print("Los elementos 'cuatro', '2' y 2 no están en la tupla")
+
+
+'''4- Igual que 3 pero que el valor a buscar sea leído por teclado.
+Recuerda cuando usas input en Python, obtienes una cadena, sin importar si el usuario
+ingresa un número o cualquier otro tipo de entrada. Por lo que es necesario distinguir si
+lo que se ha introducido es, por ejemplo, un dígito (isdigit()'''
+
+mi_tupla = (1, 2, 3, "cuatro" , "cinco")
+buscar = input("Introduce un valor a buscar:")
+
+if buscar.isdigit():
+    if int(buscar) in mi_tupla:
+        print(f"El valor {buscar} está en la tupla")
+    else:
+        print(f"El valor {buscar} no está en la tupla")
+else:
+    if buscar in mi_tupla:
+        print(f"El valor {buscar} está en la tupla")
+    else:
+        print(f"El valor {buscar} no está en la tupla")
+
+
+'''5- Implementa en Python un algoritmo que reciba tres valores por teclado y los añade
+a la tupla:
+mi_tupla(x,y,z)
+Imprime la tupla por pantalla.'''
+
+x = input("Introduce un valor para x: ")
+y = input("Introduce un valor para y: ")
+z = input("Introduce un valor para z: ")
+
+mi_tupla = (x, y, z)
+print(mi_tupla)
+
+
+'''6- Implementa un algoritmo que lea por teclado dos valores y los añada a una tupla
+con el siguiente formato:
+mi_tupla(a,x)
+donde a es una letra y x un número.
+Imprime la tupla'''
+
+a = input("Introduce una letra para a: ")
+x = input("Introduce un número para x: ")
+
+mi_tupla = (a, x)
+print(mi_tupla)
+
+
+'''7- Implementa, usando un bucle for, la tupla ahora tenga el par de valores (a,b),
+de forma que:
+mi_tupla=((a,x),(b,y),(c,z))
+donde a,b,c son letras introducidas por teclado y x,y,z son números.
+El resultado al imprimir la tupla deber ser del tipo:
+el valor a vale x,
+el valor b vale y,
+el valor c vale z
+¡¡Sustituyendo cada uno de ellos por el valor introducido por teclado!!'''
+
+mi_tupla = ()
+for i in range(3):
+    a = input("Introduce una letra para a: ")
+    x = input("Introduce un número para x: ")
+    mi_tupla += ((a, x),)
+for i in mi_tupla:
+    print(f"El valor de {i[0]} es {i[1]}")
+
+
+'''8- Desempaqueta el valor de cada respuesta almacenada en la tupla del ejercicio
+anterior.
+Desempaquetar significa sustituir el bucle for del ejercicio anterior que imprimía el
+contenido de la tupla, por una función que utilice la siguiente sintaxis:
+def desempaquetar_tupla(tupla):
+(a, x), (b, y), (c, z) = tupla
+print(f"El valor {a} vale {x}")
+print(f"El valor {b} vale {y}")
+print(f"El valor {c} vale {z}")
+de forma que recibe una tupla e imprime por pantalla el contenido de cada par
+de elementos que contiene la tupla.'''
+
+mi_tupla = ()
+for i in range(3):
+    a = input("Introduce una letra para a: ")
+    x = input("Introduce un número para x: ")
+    mi_tupla += ((a, x),)
+print(mi_tupla)
+
+def desempaquetar_tupla(mi_tupla):
+    (a, x), (b, y), (c, z) = mi_tupla
+    print(f"El valor {a} vale {x}")
+    print(f"El valor {b} vale {y}")
+    print(f"El valor {c} vale {z}")
+
+
+'''9- Implementa un algoritmo que reciba dos tuplas de cualquier tamaño con valores
+enteros y realice las siguientes operaciones:
+- Devuelve una nueva tupla con la intersección de elementos (aquellos elementos
+comunes a ambas tuplas).
+- Devuelve una nueva tupla con la diferencia de elementos de la primera tupla
+con respecto a la segunda (aquellos elementos que están en una tupla pero no
+la otra)
+Ejemplo:
+tupla1 = (1, 2, 3, 4, 5)
+tupla2 = (3, 4, 5, 6, 7)+
+# Intersección: (3, 4, 5)
+# Diferencia: (1,2,6,7)'''
+
+tupla1 = (1, 2, 3, 4, 5)
+tupla2 = (3, 4, 5, 6, 7)
+
+interseccion = tuple(set(tupla1) & set(tupla2))
+diferencia = tuple(set(tupla1) - set(tupla2))
+
+print(f"Intersección: {interseccion}")
+print(f"Diferencia: {diferencia}")
+
+
+'''10. Dada una tupla de tuplas que contiene valores de distintas ciudades y sus
+temperaturas en los últimos días, crea un programa que busque si una ciudad específica
+está en la tupla y devuelva la media de todas las temperaturas registradas para esa
+ciudad.
+Ejemplo:
+ciudades_temperaturas = (("Madrid", (30, 32, 31)), ("Barcelona", (20, 26, 21)), ("Valencia", (28, 29, 27)))
+Barcelona -> 22,3'''
+
+ciudades_temperaturas = (("Madrid", (30, 32, 31)), ("Barcelona", (20, 26, 21)), ("Valencia", (28, 29, 27)))
+ciudad = input("Introduce una ciudad: ")
+for i in ciudades_temperaturas:
+    if ciudad in i:
+        media = sum(i[1]) / len(i[1])
+        print(f"{ciudad} -> {media}")
+        break
+else:
+    print("La ciudad no está en la tupla")
+
+
+'''11. Crea de programa que genere contraseñas.
+Para ello, deberás tener 3 tuplas de las que se cogerán los elementos que formarán las
+contraseñas.
+\ Tupla con dígitos: tupla que contiene los dígitos del 0 al 9
+\ Tupla con letras: tupla que contiene las letras del abecedario (sin la letra ñ)
+\ Tupla con caracteres especiales: tupla que contiene al menos 15 caracteres
+especiales, los que consideresb(¡”$%&/()=…...)
+Especificaciones:
+\ La contraseñas generadas deberán ser también tuplas.
+\ Se generarán dos contraseñas, una fuerte y una débil.
+\ El usuario decide por teclado la longitud de la contraseña, mínimo 8
+caracteres y máximo 64.
+\ La contraseña fuerte deberá tener una compensación aproximada según la
+siguiente distribución:
+- Un 20% de dígitos, un 40% de letras y un 40% de caracteres especiales.
+\ La contraseña débil deberá tener una compensación aproximada según la
+siguiente distribución:
+- Un 80 % dígitos, un 15% letras y un 5% caracteres especiales.'''
+
+import random as r
+
+def generar_pass(tam):
+    passw = ()
+    for i in range(tam):
+        if i < tam * 0.2:
+            passw += (r.choice(digitos),)
+        elif i < tam * 0.6:
+            passw += (r.choice(letras),)
+        else:
+            passw += (r.choice(caracteres),)
+    return passw
+
+digitos = tuple(range(10))
+letras = tuple("abcdefghijklmnopqrstuvwxyz")
+caracteres = tuple("!\"#$%&/()=")
+
+tam = int(input("Introduce la longitud de la contraseña (mínimo 8, máximo 64): "))
+if tam < 8 or tam > 64:
+    print("La longitud de la contraseña no es válida")
+else:
+    passw_fuerte = generar_pass(tam)
+    passw_debil = generar_pass(tam)
+    print(f"Contraseña fuerte: {passw_fuerte}")
+    print(f"Contraseña débil: {passw_debil}")

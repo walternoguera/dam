@@ -1,4 +1,4 @@
-'''Indicar si los elementos “cuatro”, “2” y 2 están en la tupla anterior'''
+'''3- Indicar si los elementos “cuatro”, “2” y 2 están en la tupla anterior'''
 
 mi_tupla = (1, 2, 3, "cuatro" , "cinco")
 
