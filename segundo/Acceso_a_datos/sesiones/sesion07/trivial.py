@@ -49,6 +49,6 @@ for i in range(rondas):
     print(f"\nJugador {jugador_actual} - Puntaje final: {puntaje}\n")
     time.sleep(1)
 
-#Determinamos el jugador con el puntaje más alto
+#Determinamos el jugador con el puntaje más altoooo
 jugador_ganador = max(puntajes, key=puntajes.get)
 print(f"El jugador ganador es {jugador_ganador} con un puntaje de {puntajes[jugador_ganador]}")
