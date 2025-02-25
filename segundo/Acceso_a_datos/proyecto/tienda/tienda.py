@@ -146,10 +146,10 @@ def modificar_precio():
 #Eliminar un producto
 def eliminar_producto():
     nombre = input("Introduce el nombre del producto a eliminar: ")
-    for p in productos:
-        if p[1].lower() == nombre.lower():
-            historial.append([p[0], p[1], [p[3]]])  #Guardar en historial
-            productos.remove(p)
+    for i in productos:
+        if i[1].lower() == nombre.lower():
+            historial.append([i[0], i[1], [i[3]]])  #Guardar en historial
+            productos.remove(i)
             print(f"Producto {nombre} eliminado correctamente.")
             return
 
@@ -160,12 +160,12 @@ def agregar_al_carrito():
     nombre = input("Introduce el nombre del producto que quieres comprar: ")
     cantidad = int(input("Introduce la cantidad: "))
 
-    for p in productos:
-        if p[1].lower() == nombre.lower():
-            if p[2] >= cantidad:
-                p[2] -= cantidad
-                carrito.append([p[1], cantidad, p[3]])
-                print(f"{cantidad} unidades de {p[1]} añadidas al carrito.")
+    for i in productos:
+        if i[1].lower() == nombre.lower():
+            if i[2] >= cantidad:
+                i[2] -= cantidad
+                carrito.append([i[1], cantidad, i[3]])
+                print(f"{cantidad} unidades de {i[1]} añadidas al carrito.")
                 return
             else:
                 print("No hay suficiente stock disponible.")
