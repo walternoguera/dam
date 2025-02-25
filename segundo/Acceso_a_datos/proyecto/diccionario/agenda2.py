@@ -1,14 +1,15 @@
 import os
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
+
 #Funciones CRUD
 def agregar_contacto(directorio, nombre, telefono, correo):
-    directorio.update(
-        {nombre: {"Telefono": telefono, "Correo": correo}}
-    )
+    directorio[nombre] = {"Telefono": telefono, "Correo": correo}
     print(f"Contacto '{nombre}' agregado correctamente.\n")
 
 def buscar_contacto(directorio, nombre):
     contacto = directorio.get(nombre)
-    
     if contacto:
         print(f"{nombre} - Teléfono: {contacto['Telefono']} | Correo: {contacto['Correo']}")
     else:
@@ -17,16 +18,18 @@ def buscar_contacto(directorio, nombre):
 def eliminar_contacto(directorio, nombre):
     if nombre in directorio:
         del directorio[nombre]
-        print(f"El contacto '{nombre}' eliminado correctamente")
+        print(f"El contacto '{nombre}' eliminado correctamente.")
     else:
-        print(f"No se encontro el contacto'{nombre}")
+        print(f"No se encontró el contacto '{nombre}'.")
 
 def actualizar_contacto(directorio, nombre):
     if nombre in directorio:
-        nuevo_telefono = input("Nuevo telefono: ") or directorio[nombre]["Telefono"]
-        nuevo_correo = input("Nuevo correo: ") or directorio[nombre]["Correo"]
-        directorio[nombre] = {"Telefono": nuevo_telefono, "Correo":nuevo_correo}
-        print(f"el contacto '{nombre}' actualizado correctamente")
+        nuevo_telefono = input("Nuevo teléfono (deja en blanco para mantener el actual): ") or directorio[nombre]["Telefono"]
+        nuevo_correo = input("Nuevo correo (deja en blanco para mantener el actual): ") or directorio[nombre]["Correo"]
+        directorio[nombre] = {"Telefono": nuevo_telefono, "Correo": nuevo_correo}
+        print(f"El contacto '{nombre}' actualizado correctamente.")
+    else:
+        print(f"No se encontró el contacto '{nombre}'.")
 
 def mostrar_contactos(directorio):
     print("\nDirectorio de contactos:")
@@ -34,14 +37,13 @@ def mostrar_contactos(directorio):
         for nombre, info in directorio.items():
             print(f"{nombre} - Tel: {info['Telefono']} | Correo: {info['Correo']}")
     else:
-        print("No hay contactos guardados")
+        print("No hay contactos guardados.")
 
-def cls():
-    os.system('cls' if os.name == 'nt' else 'clear')
-
-
+#Función principal
 def inicio():
+    directorio = {}
     while True:
+        cls()
         print("\n--- Bienvenido a la Agenda ---")
         print("1. Agregar contacto")
         print("2. Buscar contacto")
@@ -51,6 +53,8 @@ def inicio():
         print("6. Salir")
 
         opcion = input("Selecciona una opción: ")
+        cls()  #Limpiar pantalla antes de ejecutar la acción
+
         if opcion == "1":
             nombre = input("Nombre: ")
             telefono = input("Teléfono: ")
@@ -71,9 +75,9 @@ def inicio():
             print("Saliendo...")
             break
         else:
-            print("Opción no válida. Intentalo de nuevo.")
+            print("Opción no válida. Inténtalo de nuevo.")
 
-#Diccionario global para almacenar contactos
-directorio = {}
+        input("\nPresiona Enter para continuar...")  #Pausar antes de limpiar la pantalla
 
+# Ejecutar la aplicación
 inicio()
