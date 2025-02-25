@@ -1,3 +1,4 @@
+import os
 #Funciones CRUD
 def agregar_contacto(directorio, nombre, telefono, correo):
     directorio.update(
@@ -34,6 +35,9 @@ def mostrar_contactos(directorio):
             print(f"{nombre} - Tel: {info['Telefono']} | Correo: {info['Correo']}")
     else:
         print("No hay contactos guardados")
+
+def cls():
+    os.system('cls' if os.name == 'nt' else 'clear')
 
 
 def inicio():
