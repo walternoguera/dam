@@ -1,4 +1,3 @@
-# Listas principales
 productos = []
 carrito = []
 historial = []
@@ -6,7 +5,7 @@ historial = []
 
 def iniciar_sesion():
     while True:
-        print(bcolors.HEADER + "\n--- Bienvenido a la tienda virtual ---"+ bcolors.ENDC)
+        print(bcolors.HEADER + "\n--- Bienvenido a la tienda ---"+ bcolors.ENDC)
         print("1. Cliente")
         print("2. Vendedor")
         print("3. Salir")
@@ -47,13 +46,13 @@ def menu_cliente():
             ver_carrito()
         elif opcion == "4":
             comprar_productos()
-            return  #Regresar al login
+            return
         elif opcion == "5":
             cancelar_compra()
-            return  #Regresar al login 
+            return
         elif opcion == "6":
             print("Cerrando sesión...")
-            return  #Regresar al login
+            return
         else:
             print("Opción inválida, intenta de nuevo.")
 
@@ -78,7 +77,7 @@ def menu_vendedor():
             eliminar_producto()
         elif opcion == "5":
             print("Cerrando sesión...")
-            return  #Regresar al login
+            return
         else:
             print("Opción inválida, intenta de nuevo.")
 
@@ -109,7 +108,7 @@ def agregar_producto():
     id_producto = len(historial) + 1  #generar id unico
     nombre = input("Introduce el nombre del producto: ")
     cantidad = int(input("Introduce la cantidad: "))
-    precio = float(input("Introduce el precio: "))
+    precio = float(input("Introduce el precio en euros(solo el número): "))
 
     if cantidad < 0 or precio < 0:
         print("La cantidad y el precio deben ser valores positivos.")
@@ -144,12 +143,12 @@ def modificar_precio():
 
     print("Producto no encontrado.")
 
-#Eliminar un producto (manteniendo su historial)
+#Eliminar un producto
 def eliminar_producto():
     nombre = input("Introduce el nombre del producto a eliminar: ")
     for p in productos:
         if p[1].lower() == nombre.lower():
-            historial.append([p[0], p[1], [p[3]]])  # Guardar en historial
+            historial.append([p[0], p[1], [p[3]]])  #Guardar en historial
             productos.remove(p)
             print(f"Producto {nombre} eliminado correctamente.")
             return
@@ -214,6 +213,5 @@ def cancelar_compra():
     print("Compra cancelada. Los productos han sido devueltos al inventario.")
     print("\nVolviendo al inicio de sesión...\n")
 
-#Iniciar la aplicación
 if __name__ == "__main__":
     iniciar_sesion()
